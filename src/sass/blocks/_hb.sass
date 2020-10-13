@@ -1,0 +1,105 @@
+#div 
+    width: 100vw
+    height: 100vh
+    position: relative
+    display: none
+.hb    
+    display: flex
+    z-index: 1
+
+.banner
+    position: absolute
+    top: 0
+    left: 32%
+    display: flex
+    justify-content: space-between 
+    z-index: 1
+    border: 0px dotted cyan
+    transform-style: preserve-3d
+    
+.flag
+    position: absolute
+    display: flex
+    height: 70px
+    width: 45px
+    background: hsl(var(--hue,43), 90%, 55%)
+    color: hsl(43, 90%, var(--text,5%))
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%)
+    transform-origin: 50% 0%
+    justify-content: center
+    align-items: center
+    padding-bottom: 1rem
+
+.string 
+    display: none
+
+.flag:nth-of-type(odd) 
+    --hue: 343
+    --text: 95%
+
+.banner:nth-of-type(even) .flag:nth-of-type(even) 
+    --hue: 333
+
+.banner:nth-of-type(even) .flag:nth-of-type(odd) 
+    --hue: 193
+
+.banner:nth-of-type(3) .flag:nth-of-type(odd) 
+    --hue: 33
+
+.banner:nth-of-type(3) .flag:nth-of-type(even) 
+    --hue: 173
+
+
+@supports (offset-path: path('M0,0 C100,100 700,200 800,100')) 
+    .banner 
+        height: 230px
+  
+    .banner:nth-of-type(even) 
+        --transform: rotate(0deg)
+  
+    .banner:nth-of-type(2) 
+        --transform: scaleX(-1) rotate(-8deg)
+  
+    .banner:nth-of-type(1) 
+        --transform: rotate(-4deg)
+    .flag:not(.string) 
+        position: absolute
+        offset-anchor: 50% 0%
+        offset-path: path('M0,0 C100,100 700,200 800,100')
+
+@supports (d: path('M0,0 C100,100 700,200 800,100')) 
+    .string,
+    .string svg 
+        position: absolute
+        width: 800px
+        top: 0
+        left: 0
+        height: 230px
+        display: block
+        background: transparent
+        clip-path: none
+
+    .string path 
+        stroke: hsla(183, 20%, 30%, .3)
+        stroke-width: 1px
+        d: path('M0,0 C100,100 700,200 800,100')
+
+*, *::before, *::after 
+    box-sizing: border-box
+
+#scale
+    position: absolute
+    top: 20%
+    left: 30%
+    
+#video
+    width: 35%
+    position: absolute
+    border-radius: 10px
+    overflow: hidden
+    top: 45%
+    right: 32%
+    display: flex
+    
+
+        
